@@ -120,12 +120,21 @@ export function SiteEngine() {
             <div className="mt-4 space-y-4">
               {FACTORS.map((f) => (
                 <div key={f.key}>
-                  <div className="flex items-baseline justify-between">
+                  <div className="flex items-baseline justify-between gap-2">
                     <label
                       htmlFor={`w-${f.key}`}
-                      className="text-[0.78rem] font-medium text-night-text"
+                      className="flex items-center gap-1.5 text-[0.78rem] font-medium text-night-text"
                     >
                       {f.label}
+                      <span
+                        className={`mono rounded-sm px-1 py-0.5 text-[0.52rem] uppercase tracking-[0.06em] ${
+                          f.source === "real"
+                            ? "bg-good/20 text-good"
+                            : "bg-night-3 text-night-mute"
+                        }`}
+                      >
+                        {f.source === "real" ? "live" : "sample"}
+                      </span>
                     </label>
                     <span className="mono text-[0.72rem] text-cyan">
                       {weights[f.key]}
@@ -242,10 +251,24 @@ export function SiteEngine() {
                   {focus.sub}
                 </p>
               </div>
-              <p className="mono text-2xl text-cyan">
-                {focus.score}
-                <span className="text-sm text-night-mute">/100</span>
-              </p>
+              <div className="flex items-end gap-5">
+                <div className="text-right">
+                  <p className="mono text-[0.6rem] uppercase tracking-[0.08em] text-good">
+                    pop · census
+                  </p>
+                  <p className="mono text-sm text-night-text">
+                    {focus.population.toLocaleString()}{" "}
+                    <span className={focus.popGrowth < 0 ? "text-star" : "text-good"}>
+                      {focus.popGrowth > 0 ? "+" : ""}
+                      {focus.popGrowth}%
+                    </span>
+                  </p>
+                </div>
+                <p className="mono text-2xl text-cyan">
+                  {focus.score}
+                  <span className="text-sm text-night-mute">/100</span>
+                </p>
+              </div>
             </div>
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-5">
               {FACTORS.map((f) => {
@@ -272,7 +295,9 @@ export function SiteEngine() {
               })}
             </div>
             <p className="mt-2 text-[0.66rem] text-night-mute">
-              Hover any county to read the data underneath its color.
+              <span className="text-good">Population is live Census data.</span>{" "}
+              Rent, vacancy, and access are sample stand-ins for the CoStar and
+              proprietary feeds we connect on deployment.
             </p>
           </div>
         </div>

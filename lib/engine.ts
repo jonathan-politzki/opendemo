@@ -18,26 +18,30 @@ export type County = {
   fips: string;
   name: string;
   sub: string; // the industrial submarket it reads as
-  rentGrowth: number; // % YoY asking rent
-  popGrowth: number; // % 5-yr trade area
-  vacancy: number; // %
-  intermodal: number; // 0–100 highway/rail/port access
-  landCost: number; // index, 100 = priciest
+  population: number; // REAL · Census 2023 estimate
+  popGrowth: number; // REAL · % change 2020→2023, Census
+  rentGrowth: number; // SAMPLE · % YoY asking rent (proprietary)
+  vacancy: number; // SAMPLE · %
+  intermodal: number; // SAMPLE · 0–100 highway/rail/port access
+  landCost: number; // SAMPLE · index, 100 = priciest
 };
 
+// population + popGrowth are REAL (US Census Population Estimates, 2020–2023).
+// rentGrowth / vacancy / intermodal / landCost are SAMPLE stand-ins for the
+// CoStar + proprietary feeds we connect on deployment.
 export const COUNTIES: County[] = [
-  { fips: "17197", name: "Will", sub: "I-55 / I-80 · Joliet–Elwood", rentGrowth: 11.0, popGrowth: 6.5, vacancy: 4.0, intermodal: 98, landCost: 35 },
-  { fips: "17063", name: "Grundy", sub: "I-80 logistics edge", rentGrowth: 9.5, popGrowth: 4.0, vacancy: 5.0, intermodal: 82, landCost: 28 },
-  { fips: "55059", name: "Kenosha", sub: "Pleasant Prairie · WI line", rentGrowth: 8.5, popGrowth: 5.0, vacancy: 4.6, intermodal: 72, landCost: 38 },
-  { fips: "17037", name: "DeKalb", sub: "I-88 mega-box corridor", rentGrowth: 8.0, popGrowth: 2.2, vacancy: 6.0, intermodal: 50, landCost: 25 },
-  { fips: "17089", name: "Kane", sub: "Fox Valley · Aurora", rentGrowth: 7.9, popGrowth: 3.6, vacancy: 5.8, intermodal: 60, landCost: 48 },
-  { fips: "17043", name: "DuPage", sub: "I-88 · near O'Hare", rentGrowth: 7.2, popGrowth: 1.8, vacancy: 6.1, intermodal: 80, landCost: 70 },
-  { fips: "17093", name: "Kendall", sub: "Far SW growth ring", rentGrowth: 7.0, popGrowth: 7.2, vacancy: 6.5, intermodal: 45, landCost: 32 },
-  { fips: "17097", name: "Lake", sub: "North suburbs", rentGrowth: 6.1, popGrowth: 1.1, vacancy: 7.0, intermodal: 55, landCost: 62 },
-  { fips: "17031", name: "Cook", sub: "O'Hare + South Suburbs", rentGrowth: 6.0, popGrowth: -0.3, vacancy: 8.0, intermodal: 88, landCost: 85 },
-  { fips: "17111", name: "McHenry", sub: "Far NW exurbs", rentGrowth: 5.2, popGrowth: 0.6, vacancy: 7.6, intermodal: 38, landCost: 44 },
-  { fips: "18127", name: "Porter", sub: "NW Indiana · east", rentGrowth: 5.0, popGrowth: 0.4, vacancy: 8.2, intermodal: 58, landCost: 36 },
-  { fips: "18089", name: "Lake (IN)", sub: "NW Indiana · Hammond–Gary", rentGrowth: 4.6, popGrowth: -0.8, vacancy: 9.1, intermodal: 66, landCost: 40 },
+  { fips: "17197", name: "Will", sub: "I-55 / I-80 · Joliet–Elwood", population: 700728, popGrowth: 0.56, rentGrowth: 11.0, vacancy: 4.0, intermodal: 98, landCost: 35 },
+  { fips: "17063", name: "Grundy", sub: "I-80 logistics edge", population: 53578, popGrowth: 2.02, rentGrowth: 9.5, vacancy: 5.0, intermodal: 82, landCost: 28 },
+  { fips: "55059", name: "Kenosha", sub: "Pleasant Prairie · WI line", population: 167488, popGrowth: -1.01, rentGrowth: 8.5, vacancy: 4.6, intermodal: 72, landCost: 38 },
+  { fips: "17037", name: "DeKalb", sub: "I-88 mega-box corridor", population: 100288, popGrowth: 0.02, rentGrowth: 8.0, vacancy: 6.0, intermodal: 50, landCost: 25 },
+  { fips: "17089", name: "Kane", sub: "Fox Valley · Aurora", population: 514982, popGrowth: -0.23, rentGrowth: 7.9, vacancy: 5.8, intermodal: 60, landCost: 48 },
+  { fips: "17043", name: "DuPage", sub: "I-88 · near O'Hare", population: 921213, popGrowth: -1.08, rentGrowth: 7.2, vacancy: 6.1, intermodal: 80, landCost: 70 },
+  { fips: "17093", name: "Kendall", sub: "Far SW growth ring", population: 139976, popGrowth: 5.76, rentGrowth: 7.0, vacancy: 6.5, intermodal: 45, landCost: 32 },
+  { fips: "17097", name: "Lake", sub: "North suburbs", population: 708760, popGrowth: -0.63, rentGrowth: 6.1, vacancy: 7.0, intermodal: 55, landCost: 62 },
+  { fips: "17031", name: "Cook", sub: "O'Hare + South Suburbs", population: 5087072, popGrowth: -3.35, rentGrowth: 6.0, vacancy: 8.0, intermodal: 88, landCost: 85 },
+  { fips: "17111", name: "McHenry", sub: "Far NW exurbs", population: 312800, popGrowth: 0.94, rentGrowth: 5.2, vacancy: 7.6, intermodal: 38, landCost: 44 },
+  { fips: "18127", name: "Porter", sub: "NW Indiana · east", population: 175335, popGrowth: 1.16, rentGrowth: 5.0, vacancy: 8.2, intermodal: 58, landCost: 36 },
+  { fips: "18089", name: "Lake (IN)", sub: "NW Indiana · Hammond–Gary", population: 500598, popGrowth: 0.33, rentGrowth: 4.6, vacancy: 9.1, intermodal: 66, landCost: 40 },
 ];
 
 export const FACTORS: {
@@ -48,12 +52,13 @@ export const FACTORS: {
   unit: string;
   decimals: number;
   defaultWeight: number;
+  source: "real" | "sample";
 }[] = [
-  { key: "intermodal", label: "Highway & intermodal access", hint: "Interstates, Class-I rail, inland ports", higherIsBetter: true, unit: "", decimals: 0, defaultWeight: 85 },
-  { key: "rentGrowth", label: "Rent growth", hint: "Asking-rent change, YoY", higherIsBetter: true, unit: "%", decimals: 1, defaultWeight: 70 },
-  { key: "vacancy", label: "Low vacancy", hint: "Tighter space = pricing power", higherIsBetter: false, unit: "%", decimals: 1, defaultWeight: 60 },
-  { key: "popGrowth", label: "Population growth", hint: "5-yr trade-area change", higherIsBetter: true, unit: "%", decimals: 1, defaultWeight: 55 },
-  { key: "landCost", label: "Low land cost", hint: "Cheaper basis to develop", higherIsBetter: false, unit: "", decimals: 0, defaultWeight: 45 },
+  { key: "intermodal", label: "Highway & intermodal access", hint: "Interstates, Class-I rail, inland ports", higherIsBetter: true, unit: "", decimals: 0, defaultWeight: 85, source: "sample" },
+  { key: "rentGrowth", label: "Rent growth", hint: "Asking-rent change, YoY", higherIsBetter: true, unit: "%", decimals: 1, defaultWeight: 70, source: "sample" },
+  { key: "vacancy", label: "Low vacancy", hint: "Tighter space = pricing power", higherIsBetter: false, unit: "%", decimals: 1, defaultWeight: 60, source: "sample" },
+  { key: "popGrowth", label: "Population growth", hint: "Census, 2020→2023", higherIsBetter: true, unit: "%", decimals: 1, defaultWeight: 55, source: "real" },
+  { key: "landCost", label: "Low land cost", hint: "Cheaper basis to develop", higherIsBetter: false, unit: "", decimals: 0, defaultWeight: 45, source: "sample" },
 ];
 
 export type Weights = Record<FactorKey, number>;

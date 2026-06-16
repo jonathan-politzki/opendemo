@@ -3,33 +3,27 @@ import { SiteHeader, SiteFooter } from "@/components/chrome";
 import { Star } from "@/components/brand";
 import { HeroLedger } from "@/components/hero-ledger";
 
-const DEMOS = [
+const CAPABILITIES = [
+  {
+    href: "/demos/back-office",
+    tag: "The math",
+    name: "Back Office",
+    body: "The same automation, as a sponsor model. Set the volume and read the FTE, payback, and margin math live.",
+    metric: "Headcount → P&L, at any volume",
+  },
   {
     href: "/demos/prospector",
-    tag: "Revenue desk",
+    tag: "Reads & decides",
     name: "Prospector",
-    line: "Account research, on demand",
-    body: "Point it at a company. It reads the web, builds a one-page dossier, names the person worth calling, and writes the opening you'd actually send.",
+    body: "The research muscle: it reads the open web, ranks why an account would buy, and names who to call — the same skill the desk uses to size up a vendor or tenant.",
     metric: "20 min of research → 30 sec",
-    for: "Brokerages · B2B services · anyone with a list to work",
   },
   {
     href: "/demos/lease-desk",
-    tag: "Real estate",
+    tag: "Reads documents",
     name: "Lease Desk",
-    line: "Documents in, clean data out",
-    body: "Drop a stack of leases, estoppels, and invoices. It pulls the terms that matter into one reviewable table and flags what a human should check.",
+    body: "The document muscle: it pulls the terms that matter out of 40-page leases into clean fields — how the desk knows a lease before it acts on it.",
     metric: "45 min per lease → 90 sec",
-    for: "Commercial RE · property management · asset teams",
-  },
-  {
-    href: "/demos/back-office",
-    tag: "Operations / PE",
-    name: "Back Office",
-    line: "A process, modeled and run",
-    body: "Pick a back-office workflow and watch it run end to end — then see the headcount, throughput, and margin math a sponsor cares about.",
-    metric: "8 FTEs of effort → 1.5",
-    for: "BPO roll-ups · shared-service centers · ops leaders",
   },
 ];
 
@@ -85,17 +79,17 @@ export default function Home() {
               runs itself now.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate">
-              Calumet builds software agents that quietly do the repetitive
-              desk work inside service businesses — the abstracting, keying,
-              researching, and chasing. Not a platform to buy. Work that
-              gets done.
+              Not a copilot. Calumet builds agents that take a whole back-office
+              desk and run it — an event comes in, the work gets finished, the
+              ticket closes — with nobody on the keyboard. A person steps in
+              only when something truly needs judgment.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                href="#work"
+                href="/demos/operations-desk"
                 className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-graphite"
               >
-                See the three demos <span aria-hidden>↓</span>
+                Watch a desk run itself <span aria-hidden>→</span>
               </Link>
               <Link
                 href="#contact"
@@ -106,8 +100,8 @@ export default function Home() {
             </div>
             <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-6">
               {[
-                ["3", "live demos to walk"],
-                ["~6 wks", "to a deployed pilot"],
+                ["8 / 9", "items cleared, no staff"],
+                ["≈ 2.6", "FTE off the payroll"],
                 ["0", "new systems to learn"],
               ].map(([n, l]) => (
                 <div key={l}>
@@ -154,40 +148,81 @@ export default function Home() {
             <div>
               <p className="eyebrow">What we automate</p>
               <h2 className="mt-3 font-display text-[clamp(2rem,4vw,3rem)] text-ink">
-                Three things you can watch work.
+                Watch the whole desk run itself.
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-slate">
-              Each demo runs on real-shaped data. Click into one, hit run,
-              and see the same thing your team would see on day one.
+              Start with the flagship — a property back office clearing its own
+              queue. The three below are the muscles it&apos;s built from, each
+              one its own demo.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-3">
-            {DEMOS.map((d, i) => (
+          {/* flagship */}
+          <Link
+            href="/demos/operations-desk"
+            className="group mt-12 grid overflow-hidden rounded-sm border border-ink bg-ink text-paper transition-colors hover:bg-graphite lg:grid-cols-[1.1fr_0.9fr]"
+          >
+            <div className="p-8 sm:p-10">
+              <div className="flex items-center gap-2">
+                <span className="text-star">
+                  <Star size={13} />
+                </span>
+                <span className="mono text-[0.66rem] uppercase tracking-[0.16em] text-chicago">
+                  Flagship · fully autonomous
+                </span>
+              </div>
+              <h3 className="mt-5 font-display text-[clamp(2rem,3.4vw,2.8rem)]">
+                Operations Desk
+              </h3>
+              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-paper/75">
+                Events arrive from tenants, vendors, and the lease calendar.
+                The agent finishes each one — dispatches the vendor, posts the
+                invoice, sends the renewal, closes the ticket — and pulls in a
+                person only when something genuinely needs judgment. You watch
+                the queue clear in real time.
+              </p>
+              <span className="mt-7 inline-flex items-center gap-2 bg-chicago px-5 py-2.5 text-sm font-medium text-white transition-transform group-hover:translate-x-1">
+                Start the shift →
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-px border-t border-white/10 bg-white/10 lg:border-l lg:border-t-0">
+              {[
+                ["8 / 9", "cleared with no staff"],
+                ["1", "escalated, on purpose"],
+                ["≈ 2.6", "FTE off the payroll"],
+                ["$166k", "out of the run-rate / yr"],
+              ].map(([n, l]) => (
+                <div key={l} className="bg-ink p-6">
+                  <p className="mono font-display text-3xl text-chicago">{n}</p>
+                  <p className="mt-1.5 text-[0.78rem] leading-snug text-paper/65">
+                    {l}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Link>
+
+          {/* capabilities */}
+          <p className="mono mt-10 text-[0.7rem] uppercase tracking-[0.14em] text-mute">
+            The muscles behind it
+          </p>
+          <div className="mt-4 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-3">
+            {CAPABILITIES.map((d) => (
               <Link
                 key={d.href}
                 href={d.href}
                 className="group relative flex flex-col bg-card p-7 transition-colors hover:bg-paper"
               >
-                <div className="flex items-center justify-between">
-                  <span className="mono text-[0.66rem] uppercase tracking-[0.16em] text-chicago-deep">
-                    {d.tag}
-                  </span>
-                  <span className="mono text-[0.66rem] text-mute">
-                    {String(i + 1).padStart(2, "0")} / 03
-                  </span>
-                </div>
-                <h3 className="mt-5 font-display text-2xl text-ink">{d.name}</h3>
-                <p className="mt-1 text-sm font-medium text-slate">{d.line}</p>
-                <p className="mt-4 flex-1 text-[0.9rem] leading-relaxed text-slate">
+                <span className="mono text-[0.66rem] uppercase tracking-[0.16em] text-chicago-deep">
+                  {d.tag}
+                </span>
+                <h3 className="mt-4 font-display text-2xl text-ink">{d.name}</h3>
+                <p className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-slate">
                   {d.body}
                 </p>
                 <div className="mt-6 border-t border-line-soft pt-4">
                   <p className="mono text-[0.78rem] text-ink">{d.metric}</p>
-                  <p className="mt-2 text-[0.74rem] leading-snug text-mute">
-                    {d.for}
-                  </p>
                 </div>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-chicago transition-transform group-hover:translate-x-1">
                   Open demo →

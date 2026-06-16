@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Star } from "./brand";
 
 const ALL = [
+  { href: "/demos/operations-desk", name: "Operations Desk" },
   { href: "/demos/prospector", name: "Prospector" },
   { href: "/demos/lease-desk", name: "Lease Desk" },
   { href: "/demos/back-office", name: "Back Office" },

@@ -2,10 +2,9 @@ import Link from "next/link";
 import { Star, Wordmark } from "./brand";
 
 const NAV = [
+  { href: "/demos/operations-desk", label: "Operations Desk" },
   { href: "/#work", label: "What we automate" },
-  { href: "/demos/prospector", label: "Prospector" },
-  { href: "/demos/lease-desk", label: "Lease Desk" },
-  { href: "/demos/back-office", label: "Back Office" },
+  { href: "/demos/back-office", label: "The math" },
 ];
 
 export function SiteHeader() {
@@ -54,9 +53,10 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-mute">Demos</p>
           <ul className="mt-4 space-y-2 text-sm text-paper/80">
+            <li><Link className="hover:text-chicago" href="/demos/operations-desk">Operations Desk — the autonomous back office</Link></li>
+            <li><Link className="hover:text-chicago" href="/demos/back-office">Back Office — the FTE & payback math</Link></li>
             <li><Link className="hover:text-chicago" href="/demos/prospector">Prospector — account research</Link></li>
             <li><Link className="hover:text-chicago" href="/demos/lease-desk">Lease Desk — document abstraction</Link></li>
-            <li><Link className="hover:text-chicago" href="/demos/back-office">Back Office — process automation</Link></li>
           </ul>
         </div>
         <div>

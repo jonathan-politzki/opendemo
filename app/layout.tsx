@@ -20,9 +20,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Calumet — Back-office automation for the Midwest",
+  title: "Calumet — Know where to build next",
   description:
-    "Calumet builds working software agents that take repetitive back-office work off the desks of Midwest service businesses. Three live demos.",
+    "AI for industrial real-estate developers. The capital-partner report — shaded market maps, ranked submarkets, the memo — built in minutes instead of weeks.",
 };
 
 export default function RootLayout({

@@ -2,9 +2,8 @@ import Link from "next/link";
 import { Star, Wordmark } from "./brand";
 
 const NAV = [
-  { href: "/demos/operations-desk", label: "Operations Desk" },
-  { href: "/#work", label: "What we automate" },
-  { href: "/demos/back-office", label: "The math" },
+  { href: "/#compare", label: "By hand vs. automatic" },
+  { href: "/#report", label: "The map report" },
 ];
 
 export function SiteHeader() {
@@ -46,17 +45,16 @@ export function SiteFooter() {
             <span className="font-display text-xl">CALUMET</span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-mute">
-            Back-office automation for the businesses that run the Midwest.
-            Built in Chicago.
+            AI built for real-estate developers — the reports, the sourcing, the
+            due diligence — done in minutes. Built in Chicago.
           </p>
         </div>
         <div>
-          <p className="eyebrow text-mute">Demos</p>
+          <p className="eyebrow text-mute">What we build</p>
           <ul className="mt-4 space-y-2 text-sm text-paper/80">
-            <li><Link className="hover:text-chicago" href="/demos/operations-desk">Operations Desk — the autonomous back office</Link></li>
-            <li><Link className="hover:text-chicago" href="/demos/back-office">Back Office — the FTE & payback math</Link></li>
-            <li><Link className="hover:text-chicago" href="/demos/prospector">Prospector — account research</Link></li>
-            <li><Link className="hover:text-chicago" href="/demos/lease-desk">Lease Desk — document abstraction</Link></li>
+            <li><Link className="hover:text-chicago" href="/#report">Market reports — shaded maps & memos</Link></li>
+            <li><Link className="hover:text-chicago" href="/#compare">Deal sourcing — screen to your buy box</Link></li>
+            <li><Link className="hover:text-chicago" href="/#contact">Due diligence — read the OM & leases</Link></li>
           </ul>
         </div>
         <div>

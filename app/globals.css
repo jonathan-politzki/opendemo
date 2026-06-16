@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CALUMET — operations console design system
+   Light, institutional, Chicago-grounded. Graphite ink,
+   disciplined data grid, six-pointed star as status mark.
+   ============================================================ */
+
+@theme {
+  --color-ink: #14181d;
+  --color-graphite: #272f38;
+  --color-slate: #5b6670;
+  --color-mute: #8a939c;
+  --color-line: #d9dcdf;
+  --color-line-soft: #e7e9eb;
+  --color-paper: #eceef0;
+  --color-card: #ffffff;
+  --color-chicago: #0091da;
+  --color-chicago-deep: #006a9e;
+  --color-chicago-wash: #e3f1fa;
+  --color-star: #c8102e;
+  --color-brass: #9a7324;
+  --color-good: #1f7a4d;
+
+  --font-display: var(--font-archivo), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --tracking-eyebrow: 0.18em;
+}
+
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* ---- type primitives ---- */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.96;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* ---- structural devices ---- */
+.rule {
+  border-top: 1px solid var(--color-line);
+}
+
+.hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-line-soft) 0,
+    var(--color-line-soft) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+}
+
+.grid-paper {
+  background-image:
+    linear-gradient(var(--color-line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-soft) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ---- console / trace ---- */
+.console {
+  background: var(--color-ink);
+  color: #d7e4ec;
+  font-family: var(--font-mono);
+}
+
+.scan-cursor::after {
+  content: "▍";
+  color: var(--color-chicago);
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rise {
+  animation: riseIn 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(220%); }
+}
+
+.sweep-line {
+  position: relative;
+  overflow: hidden;
+}
+.sweep-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-chicago) 28%, transparent),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: sweep 1.4s ease-in-out infinite;
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ---- focus + motion floor ---- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-chicago);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .sweep-line::after { display: none; }
+}

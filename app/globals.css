@@ -22,6 +22,15 @@
   --color-brass: #9a7324;
   --color-good: #1f7a4d;
 
+  /* dark "map room" surfaces */
+  --color-night: #0b1015;
+  --color-night-2: #121a22;
+  --color-night-3: #1a242e;
+  --color-night-line: #283642;
+  --color-night-text: #cdd9e2;
+  --color-night-mute: #7c8b98;
+  --color-cyan: #4cc9f0;
+
   --font-display: var(--font-archivo), "Arial Narrow", sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;

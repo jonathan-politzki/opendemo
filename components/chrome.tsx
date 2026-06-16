@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Star, Wordmark } from "./brand";
 
 const NAV = [
-  { href: "/#compare", label: "By hand vs. automatic" },
-  { href: "/#report", label: "The map report" },
+  { href: "/#engine", label: "The model" },
+  { href: "/#how", label: "How it works" },
 ];
 
 export function SiteHeader() {
@@ -52,8 +52,8 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-mute">What we build</p>
           <ul className="mt-4 space-y-2 text-sm text-paper/80">
-            <li><Link className="hover:text-chicago" href="/#report">Market reports — shaded maps & memos</Link></li>
-            <li><Link className="hover:text-chicago" href="/#compare">Deal sourcing — screen to your buy box</Link></li>
+            <li><Link className="hover:text-chicago" href="/#engine">Market models — shaded maps & memos</Link></li>
+            <li><Link className="hover:text-chicago" href="/#how">Deal sourcing — screen to your buy box</Link></li>
             <li><Link className="hover:text-chicago" href="/#contact">Due diligence — read the OM & leases</Link></li>
           </ul>
         </div>
